@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPick Web Api", "QuickPick Web Api\QuickPick Web Api.csproj", "{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.Core", "QuickPickWebApi.Core\QuickPickWebApi.Core.csproj", "{72BCC371-D295-4344-B422-1962030CEC4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BCC371-D295-4344-B422-1962030CEC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BCC371-D295-4344-B422-1962030CEC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BCC371-D295-4344-B422-1962030CEC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BCC371-D295-4344-B422-1962030CEC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99F5914D-F214-4B37-A1E7-FE591924F4E5}
+	EndGlobalSection
+EndGlobal
