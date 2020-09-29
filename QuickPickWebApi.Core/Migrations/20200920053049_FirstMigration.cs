@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickPickWebApi.Core.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Password = table.Column<string>(nullable: true),
                     EmailId = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
@@ -23,9 +24,9 @@ namespace QuickPickWebApi.Core.Migrations
                     Address1 = table.Column<string>(nullable: true),
                     Address2 = table.Column<string>(nullable: true),
                     Address3 = table.Column<string>(nullable: true),
-                    City = table.Column<int>(nullable: false),
-                    State = table.Column<int>(nullable: false),
-                    Country = table.Column<int>(nullable: false),
+                    City = table.Column<string>(nullable: false),
+                    State = table.Column<string>(nullable: false),
+                    Country = table.Column<string>(nullable: false),
                     PinCode = table.Column<int>(nullable: false),
                     TimeCreated = table.Column<DateTime>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
@@ -40,7 +41,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     InvoiceStaus_Desc = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
                 },
@@ -54,7 +55,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     OrderStatus_Desc = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
                 },
@@ -68,7 +69,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Shop_Name = table.Column<string>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false)
                 },
@@ -82,7 +83,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CustomerId = table.Column<int>(nullable: false),
                     OrderStatusId = table.Column<int>(nullable: false),
                     DataOrder_Placed = table.Column<DateTime>(nullable: false),
@@ -111,7 +112,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Category_Name = table.Column<string>(nullable: true),
                     ShopId = table.Column<int>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false)
@@ -132,7 +133,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     OrderId = table.Column<int>(nullable: false),
                     InvoiceStatusCodeId = table.Column<int>(nullable: false),
                     InvoiceDate = table.Column<DateTime>(nullable: false),
@@ -161,7 +162,7 @@ namespace QuickPickWebApi.Core.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Product_Name = table.Column<string>(nullable: true),
                     Product_Model = table.Column<string>(nullable: true),
                     Product_Price = table.Column<string>(nullable: true),

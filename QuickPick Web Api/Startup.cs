@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Arch.EntityFrameworkCore.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using QuickPickWebApi.Core;
+using QuickPickWebApi.Core.Infrastructure;
+using QuickPickWebApi.Services.Authentication;
 
 namespace QuickPick_Web_Api
 {
@@ -27,11 +30,17 @@ namespace QuickPick_Web_Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+                //---Db Connection string----
+            // string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            
             services.AddControllers();
-           
-           // string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DatabaseContext>(option =>
-                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+              option.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            //---- add other services class or Services Injection
+            services.AddTransient<IAuthServices, AuthService>();
+        
+          
 
 
         }

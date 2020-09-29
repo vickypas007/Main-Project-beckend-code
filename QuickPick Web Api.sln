@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPick Web Api", "QuickPick Web Api\QuickPick Web Api.csproj", "{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPick Web Api", "QuickPick Web Api\QuickPick Web Api.csproj", "{DAA5C2C8-4D72-4C58-9D40-F2485FE99B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.Core", "QuickPickWebApi.Core\QuickPickWebApi.Core.csproj", "{72BCC371-D295-4344-B422-1962030CEC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPickWebApi.Core", "QuickPickWebApi.Core\QuickPickWebApi.Core.csproj", "{72BCC371-D295-4344-B422-1962030CEC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.Services", "QuickPickWebApi.Services\QuickPickWebApi.Services.csproj", "{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.ViewModel", "QuickPickWebApi.ViewModel\QuickPickWebApi.ViewModel.csproj", "{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{72BCC371-D295-4344-B422-1962030CEC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72BCC371-D295-4344-B422-1962030CEC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72BCC371-D295-4344-B422-1962030CEC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
