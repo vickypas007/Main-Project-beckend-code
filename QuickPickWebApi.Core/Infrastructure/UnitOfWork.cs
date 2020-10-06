@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace QuickPickWebApi.Core.Infrastructure
 {
     public class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TContext>, IUnitOfWork
-      where TContext : DbContext, IDisposable
+       where TContext : DbContext, IDisposable
     {
         private Dictionary<Type, object> _repositories;
         private IDbContextTransaction _transaction;

@@ -10,13 +10,12 @@ using System.Text;
 
 namespace QuickPickWebApi.Core.Infrastructure
 {
-    public class Repository<T> :   IRepository<T> where T : class
+    public class Repository<T> : BaseRepository<T>, IRepository<T> where T : class
     {
-        protected readonly DbContext _dbContext;
-        public Repository(DbContext context)
+        public Repository(DbContext context) : base(context)
         {
-            _dbContext = context ?? throw new ArgumentException(nameof(context));
         }
+
         public void Add(T entity)
         {
             _dbContext.Set<T>().Add(entity);
@@ -27,16 +26,19 @@ namespace QuickPickWebApi.Core.Infrastructure
             _dbContext.Set<T>().AddRange(entities);
         }
 
+
         public void Add(IEnumerable<T> entities)
         {
             _dbContext.Set<T>().AddRange(entities);
         }
+
 
         public void Delete(T entity)
         {
             var existing = _dbContext.Set<T>().Find(entity);
             if (existing != null) _dbContext.Set<T>().Remove(existing);
         }
+
 
         public void Delete(object id)
         {
@@ -50,7 +52,8 @@ namespace QuickPickWebApi.Core.Infrastructure
                 var res = _dbContext.Entry(entity).State = EntityState.Deleted;
                 _dbContext.Attach(entity);
                 _dbContext.Remove(entity);
-               
+                //_dbContext.Attach(entity);
+                //_dbContext.Remove(entity);
             }
             else
             {
@@ -69,18 +72,18 @@ namespace QuickPickWebApi.Core.Infrastructure
             _dbContext.Set<T>().RemoveRange(entities);
         }
 
-        public void Dispose()
-        {
-            _dbContext?.Dispose();
-        }
 
+        //[Obsolete("Method is replaced by GetList")]
+        //public IEnumerable<T> Get()
+        //{
+        //    return _dbSet.ToList();
+        //}
 
         [Obsolete("Method is replaced by GetList")]
         public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
         {
             return _dbContext.Set<T>().Where(predicate).AsNoTracking().ToList();
         }
-
 
         public void Update(T entity)
         {
@@ -93,11 +96,15 @@ namespace QuickPickWebApi.Core.Infrastructure
             _dbContext.Set<T>().UpdateRange(entities);
         }
 
+
         public void Update(IEnumerable<T> entities)
         {
             _dbContext.Set<T>().UpdateRange(entities);
         }
 
-        
+        public void Dispose()
+        {
+            _dbContext?.Dispose();
+        }
     }
 }

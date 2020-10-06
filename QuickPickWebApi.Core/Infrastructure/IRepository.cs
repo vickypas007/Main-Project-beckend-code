@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QuickPickWebApi.Core.Infrastructure
 {
-    public interface IRepository<T> :  IDisposable where T : class
+    public interface IRepository<T> : IGetRepository<T>, IDisposable where T : class
     {
         void Add(T entity);
         void Add(params T[] entities);
@@ -20,6 +20,8 @@ namespace QuickPickWebApi.Core.Infrastructure
         void Update(T entity);
         void Update(params T[] entities);
         void Update(IEnumerable<T> entities);
+
+
 
     }
 }

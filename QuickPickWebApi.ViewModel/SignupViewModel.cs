@@ -40,5 +40,6 @@ namespace QuickPickWebApi.ViewModel
         public string State { get; set; }
         public string Country { get; set; }
         public int PinCode { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }
