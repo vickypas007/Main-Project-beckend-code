@@ -4,12 +4,15 @@ This app is developed for those users who want to order their goods or items fro
 #06/10/2020
 RUN USING CMD
 
-1.create a Directory Like QuickPick
-2. open CMD on that directiry location
+1.create a Directory Like QuickPick.
+
+2. open CMD on that directiry location.
+
 git clone --branch VIckyBranch https://github.com/vickypas007/QuickPick-Web-Api.git
 cd QuickPick-Web-Api
 git checkout VIckyBranch
 dotnet restore
+cd QuickPick Web Api
 dotnet run 
 
 3. then after a crome will open and then change the url to https://localhost:5001/WeatherForecast or https://localhost:5001/api/Customer
