@@ -11,48 +11,58 @@ using QuickPickWebApi.ViewModel;
 
 namespace QuickPick_Web_Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CustomerController : ControllerBase
-    {
+	[Route("api/[controller]")]
+	[ApiController]
+	public class CustomerController : ControllerBase
+	{
 
-        IAuthServices AuthServices { get; }
-        DatabaseContext DbContext { get; }
+		IAuthServices AuthServices { get; }
 
-        //ILogger Logger { get; }
+		DatabaseContext DbContext { get; }
 
-        public CustomerController(IAuthServices authServices, DatabaseContext context)
-        {
-            AuthServices = authServices;
-            DbContext = context;
-        }
+		//ILogger Logger { get; }
 
-        private UnitOfWork<DatabaseContext> unitOfWork;
-        /// <summary>
-        /// UnitOfWork
-        /// </summary>
-        public UnitOfWork<DatabaseContext> UnitOfWork
-        {
-            get
-            {
-                if (unitOfWork == null)
-                {
-                    unitOfWork = new UnitOfWork<DatabaseContext>(DbContext);
-                }
-                return unitOfWork;
-            }
-        }
+		public CustomerController(IAuthServices authServices, DatabaseContext context)
+		{
+			AuthServices = authServices;
+			DbContext = context;
+		}
 
-        [HttpPost("signup")]
-        public SignupResponceViewModel Register([FromBody]SignupViewModel signupView)
-        {
-            return AuthServices.UserSignup(signupView);
-        }
+		private UnitOfWork<DatabaseContext> unitOfWork;
+		/// <summary>
+		/// UnitOfWork
+		/// </summary>
+		public UnitOfWork<DatabaseContext> UnitOfWork
+		{
+			get
+			{
+				if (unitOfWork == null)
+				{
+					unitOfWork = new UnitOfWork<DatabaseContext>(DbContext);
+				}
+				return unitOfWork;
+			}
+		}
 
-        [HttpGet]
-        public string Get()
-        {
-            return "one Api";
-        }
-    }
+		[HttpPost("signup")]
+		public SignupResponceViewModel Register([FromBody] SignupViewModel signupView)
+		{
+			return AuthServices.UserSignup(signupView);
+		}
+
+		[HttpGet]
+
+		public string Get()
+		{
+			return "one Api";
+		}
+
+	[HttpGet]
+		[Route("productDetails")]
+		public ProductDetailsViewModel Register([FromQuery] int productId)
+		{
+			return AuthServices.ProductDetails(productId);
+		}
+
+	}
 }

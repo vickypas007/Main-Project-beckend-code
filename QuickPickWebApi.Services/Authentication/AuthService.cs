@@ -92,5 +92,20 @@ namespace QuickPickWebApi.Services.Authentication
             
         
         }
-    }
-}
+public ProductDetailsViewModel ProductDetails(int productId){
+					ProductDetailsViewModel productDetails = new ProductDetailsViewModel();
+					var productRepos = UnitOfWork.GetRepository<Product>();
+				  var	product = productRepos.Get(predicate: x=> x.Id == productId).ToList();
+					
+			for(var i=0;i<product.Count;i++){
+				if(product[i].Id != 0){
+          productDetails.Id = product[i].Id;
+				  productDetails.Product_Name = product[i].Product_Name; 
+					productDetails.Product_Color= product[i].Product_Color;
+				}
+			}
+	
+					return productDetails;
+				}
+		}
+		}
