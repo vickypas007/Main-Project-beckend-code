@@ -1,6 +1,16 @@
 # QuickPick-Web-Api
 This app is developed for those users who want to order their goods or items from the local shop in the locality.
 
+
+//----------------------------------------
+//command for addmigration 
+ EntityFrameworkCore\Add-Migration ff
+
+// for update db
+EntityFrameworkCore\update-database
+
+
+
 #06/10/2020
 RUN USING CMD
 
