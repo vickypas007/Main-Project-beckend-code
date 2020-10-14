@@ -9,7 +9,8 @@ namespace QuickPickWebApi.Core.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
         public string EmailId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

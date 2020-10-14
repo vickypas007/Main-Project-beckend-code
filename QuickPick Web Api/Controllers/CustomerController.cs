@@ -43,16 +43,19 @@ namespace QuickPick_Web_Api.Controllers
             }
         }
 
-        [HttpPost("signup")]
-        public SignupResponceViewModel Register([FromBody]SignupViewModel signupView)
-        {
-            return AuthServices.UserSignup(signupView);
-        }
+        //[HttpPost("signup")]
+        //public SignupResponceViewModel Register([FromBody]SignupViewModel signupView)
+        //{
+        //    return AuthServices.UserSignup(signupView);
+        //}
+
+
+
 
         [HttpGet]
         public string Get()
         {
-            return "one Api";
+            return " Api is working";
         }
     }
 }
