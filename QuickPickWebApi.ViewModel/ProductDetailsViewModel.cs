@@ -11,5 +11,6 @@ namespace QuickPickWebApi.ViewModel
         public string Product_Color { get; set; }
         public string Product_Size { get; set; }
         public string isActive { get; set; } 
+			 public string ErrorMessage { get; set; }
 		}
 }

@@ -9,5 +9,7 @@ namespace QuickPickWebApi.Services.Authentication
     {
         SignupResponceViewModel UserSignup(SignupViewModel signupViewModel);
 				ProductDetailsViewModel ProductDetails(int productId);
+				ProductDetailsViewModel AddProduct(ProductDetailsViewModel productDetailsViewModel);
+
     }
 }

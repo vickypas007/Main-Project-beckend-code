@@ -58,10 +58,16 @@ namespace QuickPick_Web_Api.Controllers
 		}
 
 	[HttpGet]
-		[Route("productDetails")]
+		[Route("getProductDetails")]
 		public ProductDetailsViewModel Register([FromQuery] int productId)
 		{
 			return AuthServices.ProductDetails(productId);
+		}
+
+			[HttpPost("postProductDetails")]
+		public ProductDetailsViewModel Register([FromBody] ProductDetailsViewModel postProductDetails)
+		{
+			return AuthServices.AddProduct(postProductDetails);
 		}
 
 	}

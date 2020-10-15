@@ -92,6 +92,8 @@ namespace QuickPickWebApi.Services.Authentication
             
         
         }
+
+				//Getting the Product Details
 public ProductDetailsViewModel ProductDetails(int productId){
 					ProductDetailsViewModel productDetails = new ProductDetailsViewModel();
 					var productRepos = UnitOfWork.GetRepository<Product>();
@@ -107,5 +109,58 @@ public ProductDetailsViewModel ProductDetails(int productId){
 	
 					return productDetails;
 				}
+
+            //Adding the Product in DB
+				 public ProductDetailsViewModel AddProduct(ProductDetailsViewModel productDetailsViewModel)
+        {
+            ProductDetailsViewModel response = new ProductDetailsViewModel();
+            var ProductRepos = UnitOfWork.GetRepository<Product>();
+
+            var isProductIsExist = ProductRepos.Get(predicate: x => x.Id == productDetailsViewModel.Id);
+
+            if (isProductIsExist.Count() != 0)
+            {
+                response.ErrorMessage = "Product id is already exist";
+                return response;
+            }
+            else
+            {
+                try
+                {
+                    var product = new Product
+                    {
+                        Id = productDetailsViewModel.Id,
+                        Product_Name = productDetailsViewModel.Product_Name,
+                        Product_Description = productDetailsViewModel.Product_Description,
+                        Product_Model = productDetailsViewModel.Product_Model,
+                        Product_Color = productDetailsViewModel.Product_Color,
+                        Product_Available = true,
+                        Product_Size = productDetailsViewModel.Product_Size,
+                        IsActive = true,
+                    };
+                    ProductRepos.Add(product);
+                    UnitOfWork.SaveChanges();
+
+                    response.Id = product.Id;
+                    response.Product_Name = product.Product_Name;
+                    response.Product_Model = product.Product_Model;
+										product.CategoryId = 1;
+						
+                }
+                catch (Exception e)
+                {
+                    var msg = e.Message;
+                    var StackTrack = e.InnerException.StackTrace;
+                    UnitOfWork.RollBack();
+                }
+
+                return response;
+            }
+            
+            
+        
+        }
 		}
+
+		
 		}
