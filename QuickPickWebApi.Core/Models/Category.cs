@@ -12,12 +12,9 @@ namespace QuickPickWebApi.Core.Models
         public int Id { get; set; }
         public string Category_Name { get; set; }
 
-        [ForeignKey("Shop")]
-        public int ShopId { get; set; }
+        public string Description { get; set; }
         public bool IsActive { get; set; }
 
-        [ForeignKey("ShopId")]
-        public Shop Shop { get; set; }
 
     }
 }

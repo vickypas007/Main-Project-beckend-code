@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickPickWebApi.Core;
 
 namespace QuickPickWebApi.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210317082216_cityh")]
+    partial class cityh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,8 +93,8 @@ namespace QuickPickWebApi.Core.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<string>("StateName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("StateName")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

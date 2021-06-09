@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPick Web Api", "QuickP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPickWebApi.Core", "QuickPickWebApi.Core\QuickPickWebApi.Core.csproj", "{72BCC371-D295-4344-B422-1962030CEC4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.Services", "QuickPickWebApi.Services\QuickPickWebApi.Services.csproj", "{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPickWebApi.Services", "QuickPickWebApi.Services\QuickPickWebApi.Services.csproj", "{D8FE87D6-ABC2-4E27-9CBB-DE48C220FB14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickPickWebApi.ViewModel", "QuickPickWebApi.ViewModel\QuickPickWebApi.ViewModel.csproj", "{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickPickWebApi.ViewModel", "QuickPickWebApi.ViewModel\QuickPickWebApi.ViewModel.csproj", "{20A9A581-C66D-4D2A-BA6F-B7F849B6C762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

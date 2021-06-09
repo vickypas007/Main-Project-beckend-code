@@ -17,9 +17,14 @@ namespace QuickPickWebApi.Core.Models
         [ForeignKey("OrderStatusId")]
         public int OrderStatusId { get; set; }
 
-        public DateTime DataOrder_Placed { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public string OrderDetail { get; set; }
+
+        public int Quantity { get; set; }
+
+        [ForeignKey("ProductId")]
+        public int ProductId { get; set; }
 
         public bool IsActive { get; set; }
 
@@ -28,6 +33,9 @@ namespace QuickPickWebApi.Core.Models
 
         [ForeignKey("OrderStatusId")]
         public OrderStatus OrderStatus { get; set; }
+
+        [ForeignKey("ProductId")]
+        public Products Products { get; set; }
 
     }
 }

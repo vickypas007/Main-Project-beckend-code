@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickPickWebApi.Core;
 
 namespace QuickPickWebApi.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210317092544_city")]
+    partial class city
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,26 +45,7 @@ namespace QuickPickWebApi.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CityName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CountryName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StateName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("StateId");
 
                     b.ToTable("cities");
                 });
@@ -91,8 +74,8 @@ namespace QuickPickWebApi.Core.Migrations
                     b.Property<int>("StateId")
                         .HasColumnType("int");
 
-                    b.Property<string>("StateName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("StateName")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -518,21 +501,6 @@ namespace QuickPickWebApi.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("taxRates");
-                });
-
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.City", b =>
-                {
-                    b.HasOne("QuickPickWebApi.Core.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuickPickWebApi.Core.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("QuickPickWebApi.Core.Models.CityHub", b =>

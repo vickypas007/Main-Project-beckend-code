@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickPickWebApi.Core;
 
 namespace QuickPickWebApi.Core.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210316180529_statett")]
+    partial class statett
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,75 +39,7 @@ namespace QuickPickWebApi.Core.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("CityName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CountryName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StateName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("cities");
-                });
-
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.CityHub", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CityName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CountryName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("HubName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StateName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("cityHubs");
-                });
-
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.Country", b =>
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.CountryMaster", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,7 +50,7 @@ namespace QuickPickWebApi.Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("countrys");
+                    b.ToTable("countryMasters");
                 });
 
             modelBuilder.Entity("QuickPickWebApi.Core.Models.Customer", b =>
@@ -179,6 +113,44 @@ namespace QuickPickWebApi.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.DistHub", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("DistrictMasterId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HubName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DistrictMasterId");
+
+                    b.ToTable("distHubs");
+                });
+
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.DistrictMaster", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("DistrictName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("StateMasterId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateMasterId");
+
+                    b.ToTable("districtMasters");
                 });
 
             modelBuilder.Entity("QuickPickWebApi.Core.Models.Invoice", b =>
@@ -418,7 +390,7 @@ namespace QuickPickWebApi.Core.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityHubId")
+                    b.Property<int>("DistHubId")
                         .HasColumnType("int");
 
                     b.Property<string>("District")
@@ -452,7 +424,7 @@ namespace QuickPickWebApi.Core.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("CityHubId");
+                    b.HasIndex("DistHubId");
 
                     b.ToTable("Shops");
                 });
@@ -478,26 +450,23 @@ namespace QuickPickWebApi.Core.Migrations
                     b.ToTable("shopCategories");
                 });
 
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.State", b =>
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.StateMaster", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CountryId")
+                    b.Property<int>("CountryMasterId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CountryName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("StateName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("CountryMasterId");
 
-                    b.ToTable("states");
+                    b.ToTable("stateMasters");
                 });
 
             modelBuilder.Entity("QuickPickWebApi.Core.Models.TaxRate", b =>
@@ -520,38 +489,20 @@ namespace QuickPickWebApi.Core.Migrations
                     b.ToTable("taxRates");
                 });
 
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.City", b =>
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.DistHub", b =>
                 {
-                    b.HasOne("QuickPickWebApi.Core.Models.Country", "Country")
+                    b.HasOne("QuickPickWebApi.Core.Models.DistrictMaster", "District")
                         .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuickPickWebApi.Core.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
+                        .HasForeignKey("DistrictMasterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.CityHub", b =>
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.DistrictMaster", b =>
                 {
-                    b.HasOne("QuickPickWebApi.Core.Models.City", "City")
+                    b.HasOne("QuickPickWebApi.Core.Models.StateMaster", "State")
                         .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuickPickWebApi.Core.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuickPickWebApi.Core.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
+                        .HasForeignKey("StateMasterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -622,9 +573,9 @@ namespace QuickPickWebApi.Core.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("QuickPickWebApi.Core.Models.CityHub", "cityHub")
+                    b.HasOne("QuickPickWebApi.Core.Models.DistHub", "DistHub")
                         .WithMany()
-                        .HasForeignKey("CityHubId")
+                        .HasForeignKey("DistHubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -644,11 +595,11 @@ namespace QuickPickWebApi.Core.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QuickPickWebApi.Core.Models.State", b =>
+            modelBuilder.Entity("QuickPickWebApi.Core.Models.StateMaster", b =>
                 {
-                    b.HasOne("QuickPickWebApi.Core.Models.Country", "Country")
+                    b.HasOne("QuickPickWebApi.Core.Models.CountryMaster", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId")
+                        .HasForeignKey("CountryMasterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Org.BouncyCastle.Asn1.Cms;
 using QuickPickWebApi.Core;
 using QuickPickWebApi.Core.Infrastructure;
 using QuickPickWebApi.Core.Models;
@@ -107,6 +106,11 @@ namespace QuickPickWebApi.Services.Authentication
             user.IsActive = true;
             await DbContext.Customers.AddAsync(user);
             UnitOfWork.SaveChanges();
+            if(user.EmailId != "" || user.EmailId != null)
+            {
+
+            }
+            UnitOfWork.Commit();
             return user;
         }
 

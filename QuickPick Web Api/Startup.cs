@@ -21,6 +21,9 @@ using QuickPickWebApi.Core;
 using QuickPickWebApi.Core.Infrastructure;
 using QuickPickWebApi.Services.Authentication;
 using QuickPickWebApi.ViewModel;
+using QuickPickWebApi.Core.Models;
+using QuickPickWebApi.Services.Product;
+using QuickPickWebApi.Services.ProductServices;
 
 namespace QuickPick_Web_Api
 {
@@ -51,6 +54,7 @@ namespace QuickPick_Web_Api
             services.AddControllers();
             services.AddDbContext<DatabaseContext>(option =>
               option.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+             // option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddCors(options =>
             {
@@ -78,7 +82,7 @@ namespace QuickPick_Web_Api
             services.AddSingleton(mapper);
             //---- add other services class or Services Injection
             services.AddTransient<IAuthServices, AuthService>();
-         
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                  .AddJwtBearer(options =>
